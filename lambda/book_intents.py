@@ -80,38 +80,6 @@ class Books_ByGenre_IntentHandler(AbstractRequestHandler):
                 .response
         )
 
-## ____________________________________________________________________________________________________________________Books_ByBookGenre_Intent
-class Books_ByBookGenre_IntentHandler(AbstractRequestHandler):
-    """Handler for Request of Books by Book Genre Intent."""
-    def can_handle(self, handler_input):
-        # type: (HandlerInput) -> bool
-        return ask_utils.is_intent_name("Books_ByBookGenre_Intent")(handler_input)
-    def handle(self, handler_input):
-        # type: (HandlerInput) -> Response
-        slots = handler_input.request_envelope.request.intent.slots
-        (flag_title, book_title) = getBookTitleResolution(slots)
-        
-        if flag_title:
-            (flag_books, genre, similar_books) = getBooksByBookGenre(book_title)
-            
-            if flag_books and similar_books!=None:
-                if len(similar_books)>1:
-                    speak_output = '"'+book_title.title()+'" is in the '+genre+' genre. Books of the same genre are: '+str(similar_books)+'.'
-                else:
-                    speak_output = '"'+book_title.title()+'" is in the '+genre+' genre. A book of the same genre is: '+str(similar_books)+'.'
-            else:
-                speak_output = "Sorry, I could not find the book you mentioned. Ask me about another one!"
-                
-        else:
-            speak_output = "Sorry, I don't believe that you included the name of the book. Try asking me again!"
-            
-        return (
-            handler_input.response_builder
-                .speak(speak_output)
-                # .ask("add a reprompt if you want to keep the session open for the user to respond")
-                .response
-        )
-
 ## ____________________________________________________________________________________________________________________BookRating_Intent
 class BookRating_IntentHandler(AbstractRequestHandler):
     """Handler for Request of Book Rating Intent."""

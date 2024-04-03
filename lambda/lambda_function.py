@@ -20,7 +20,7 @@ logger.setLevel(logging.INFO)
 ########################################################################################################################################################
 ## ______________________________________________________________________________________________________________________________________ BOOK INTENTS 
 ########################################################################################################################################################
-from book_intents import Books_ByAuthor_IntentHandler, Books_ByGenre_IntentHandler, BookRating_IntentHandler, BookDescription_IntentHandler #, Books_ByBookGenre_IntentHandler
+from book_intents import Books_ByAuthor_IntentHandler, Books_ByGenre_IntentHandler, BookRating_IntentHandler, BookDescription_IntentHandler
 
 ########################################################################################################################################################
 ## ______________________________________________________________________________________________________________________________________ AUTHOR INTENTS 
@@ -30,7 +30,7 @@ from author_intents import Author_ByBook_IntentHandler, Authors_ByGenre_IntentHa
 ########################################################################################################################################################
 ## ______________________________________________________________________________________________________________________________________ AUTHOR INTENTS 
 ########################################################################################################################################################
-from genre_intents import GenreDescription_IntentHandler # Genre_ByBookAndAuthor_IntentHandler, Genre_ByAuthor_Intent, Genre_ByBook_Intent
+from genre_intents import GenreDescription_IntentHandler, Genres_ByAuthor_IntentHandler, Genres_ByBook_IntentHandler
 
 ########################################################################################################################################################
 ## ______________________________________________________________________________________________________________________________________ BASIC INTENTS 
@@ -108,19 +108,17 @@ sb = SkillBuilder()
 sb.add_request_handler(HelloIntentHandler()) #1
 # ______________________________________________________________ BOOK
 sb.add_request_handler(Books_ByAuthor_IntentHandler()) #2
-#sb.add_request_handler(Books_ByBookGenre_IntentHandler()) #3
-sb.add_request_handler(Books_ByGenre_IntentHandler()) #4
-sb.add_request_handler(BookDescription_IntentHandler()) #5
-sb.add_request_handler(BookRating_IntentHandler()) #6
+sb.add_request_handler(Books_ByGenre_IntentHandler()) #3
+sb.add_request_handler(BookDescription_IntentHandler()) #4
+sb.add_request_handler(BookRating_IntentHandler()) #5
 # ______________________________________________________________ AUTHOR
-sb.add_request_handler(Author_ByBook_IntentHandler()) #7
-sb.add_request_handler(Authors_ByGenre_IntentHandler()) #8
-sb.add_request_handler(AuthorDescription_IntentHandler()) #9
+sb.add_request_handler(Author_ByBook_IntentHandler()) #6
+sb.add_request_handler(Authors_ByGenre_IntentHandler()) #7
+sb.add_request_handler(AuthorDescription_IntentHandler()) #8
 # ______________________________________________________________ GENRE
-#sb.add_request_handler(Genre_ByBookAndAuthor_IntentHandler()) #10
-#sb.add_request_handler(Genre_ByAuthor_Intent()) #11
-#sb.add_request_handler(Genre_ByBook_Intent()) #12
-sb.add_request_handler(GenreDescription_IntentHandler()) #13
+sb.add_request_handler(Genres_ByAuthor_Intent()) #9
+sb.add_request_handler(Genres_ByBook_Intent()) #10
+sb.add_request_handler(GenreDescription_IntentHandler()) #11
 
 
 sb.add_request_handler(IntentReflectorHandler()) # make sure IntentReflectorHandler is last so it doesn't override your custom intent handlers

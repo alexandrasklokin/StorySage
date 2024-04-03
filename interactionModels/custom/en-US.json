@@ -40,7 +40,9 @@
           ],
           "name": "BookDescription_Intent",
           "samples": [
-            "give me the description of the book {Book}"
+            "give me the description of the book {Book}",
+            "please describe the book {Book}",
+            "tell me about {Book}"
           ]
         },
         {
@@ -52,19 +54,9 @@
           ],
           "name": "BookRating_Intent",
           "samples": [
-            "give me the rating of {Book}"
-          ]
-        },
-        {
-          "slots": [
-            {
-              "name": "Book",
-              "type": "AMAZON.Book"
-            }
-          ],
-          "name": "Books_ByBookGenre_Intent",
-          "samples": [
-            "give me some books in the same genre as {Book}"
+            "give me the rating of {Book}",
+            "what is rating of the book {Book}",
+            "what do people rate {Book}"
           ]
         },
         {
@@ -76,7 +68,9 @@
           ],
           "name": "Books_ByAuthor_Intent",
           "samples": [
-            "give me some books written by {Author}"
+            "give me some books written by {Author}",
+            "which books did {Author} write",
+            "tell me what books were written by {Author}"
           ]
         },
         {
@@ -88,7 +82,9 @@
           ],
           "name": "Books_ByGenre_Intent",
           "samples": [
-            "give me books in the {Genre} genre"
+            "give me books in the {Genre} genre",
+            "what books are in the genre {Genre}",
+            "tell me some {Genre} books"
           ]
         },
         {
@@ -100,7 +96,9 @@
           ],
           "name": "Author_ByBook_Intent",
           "samples": [
-            "which author wrote {Book}"
+            "which author wrote {Book}",
+            "tell me who wrote {Book}",
+            "who wrote the book {Book}"
           ]
         },
         {
@@ -112,7 +110,9 @@
           ],
           "name": "Authors_ByGenre_Intent",
           "samples": [
-            "give me some authors in the {Genre} genre"
+            "give me some authors in the {Genre} genre",
+            "who writes books in the {Genre} genre",
+            "give me some {Genre} authors"
           ]
         },
         {
@@ -124,7 +124,9 @@
           ],
           "name": "AuthorDescription_Intent",
           "samples": [
-            "tell me about {Author}"
+            "tell me about {Author}",
+            "who is {Author}",
+            "describe {Author}"
           ]
         },
         {
@@ -136,7 +138,37 @@
           ],
           "name": "GenreDescription_Intent",
           "samples": [
-            "give me the definition of the genre {Genre}"
+            "give me the definition of the genre {Genre}",
+            "tell me about {Genre}",
+            "what is the {Genre} genre"
+          ]
+        },
+        {
+          "slots": [
+            {
+              "name": "Author",
+              "type": "AMAZON.Author"
+            }
+          ],
+          "name": "Genres_ByAuthor_Intent",
+          "samples": [
+            "give the the genres which {Author} writes",
+            "which genres does {Author} write",
+            "which kinds of books does {Author} write"
+          ]
+        },
+        {
+          "slots": [
+            {
+              "name": "Book",
+              "type": "AMAZON.Book"
+            }
+          ],
+          "name": "Genres_ByBook_Intent",
+          "samples": [
+            "give me the genres of the book {Book}",
+            "tell me the genres of {Book}",
+            "what genre is the book {Book} considered"
           ]
         }
       ],

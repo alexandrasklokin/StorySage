@@ -53,28 +53,15 @@ def getBookRating(book_title):
     (flag, rating) = makeRequest(url, 'averageRating')
     return (flag, rating)
 
-def getBookGenres(book_title):
-    url = f'https://www.googleapis.com/books/v1/volumes?q=intitle:{book_title}&key={API_KEY}'
-    (flag, categories) = makeRequest(url, 'categories')
-    return (flag, categories)
-
-def getBooksByBookGenre(book_title):
-    (flag_genre, genres) = getBookGenres(book_title)
-    if flag_genre:
-        main_genre = genres[0]
-        url = f'https://www.googleapis.com/books/v1/volumes?q=subject:{main_genre}&key={API_KEY}'
-        (flag, books) = makeRequest(url, 'title')
-    return (flag, main_genre, books)
-
 def getBooksByAuthor(author_name):
     url = f'https://www.googleapis.com/books/v1/volumes?q=inauthor:{author_name}&key={API_KEY}'
     (flag, books) = makeRequestMultiResponse(url, 'title')
-    return (flag, books)
+    return (flag, set(books))
 
 def getBooksByGenre(genre):
     url = f'https://www.googleapis.com/books/v1/volumes?q=subject:{genre}&key={API_KEY}'
     (flag, books) = makeRequestMultiResponse(url, 'title')
-    return (flag, books)
+    return (flag, set(books))
 
 def getAuthorsByBook(book_title):
     url = f'https://www.googleapis.com/books/v1/volumes?q=intitle:{book_title}&key={API_KEY}'
@@ -85,4 +72,16 @@ def getAuthorsByGenre(genre):
     url = f'https://www.googleapis.com/books/v1/volumes?q=subject:{genre}&key={API_KEY}'
     (flag, authors) = makeRequestMultiResponse(url, 'authors')
     authors = [elem[0] for elem in authors]
-    return (flag, authors)
+    return (flag, set(authors))
+
+def getGenresByAuthor(author_name):
+    url = f'https://www.googleapis.com/books/v1/volumes?q=inauthor:{author_name}&key={API_KEY}'
+    (flag, genres) = makeRequestMultiResponse(url, 'categories')
+    genres = [elem[0] for elem in genres if elem!= None]
+    return (flag, set(genres))
+
+def getGenresByBook(book_name):
+    url = f'https://www.googleapis.com/books/v1/volumes?q=intitle:{book_name}&key={API_KEY}'
+    (flag, genres) = makeRequestMultiResponse(url, 'categories')
+    genres = [elem[0] for elem in genres if elem!= None]
+    return (flag, set(genres))
